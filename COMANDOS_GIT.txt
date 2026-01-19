@@ -1,0 +1,36 @@
+COMANDOS PARA SUBIR EL PROYECTO A GITHUB
+==========================================
+
+Ejecuta estos comandos en tu terminal (Git Bash, CMD o PowerShell):
+
+1. Inicializar repositorio:
+   git init
+
+2. Agregar todos los archivos:
+   git add .
+
+3. Crear commit:
+   git commit -m "Entrega 1 - Users, Auth y JWT"
+
+4. Configurar branch main:
+   git branch -M main
+
+5. Agregar remote (si no lo has hecho antes):
+   git remote add origin https://github.com/Tojohtml98/Entrega-1-.git
+
+   Si ya existe el remote, usa:
+   git remote set-url origin https://github.com/Tojohtml98/Entrega-1-.git
+
+6. Subir a GitHub:
+   git push -u origin main
+
+==========================================
+NOTAS IMPORTANTES:
+==========================================
+
+- Asegúrate de tener Git instalado
+- Verifica que el repositorio existe en GitHub antes de hacer push
+- Si te pide autenticación, usa un Personal Access Token de GitHub
+- Verifica que .gitignore excluya node_modules y .env
+
+==========================================
