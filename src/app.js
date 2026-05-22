@@ -31,6 +31,7 @@ app.get('/', (req, res) => {
   res.json({
     message: 'API de Ecommerce funcionando correctamente',
     endpoints: {
+      health: 'GET /health',
       register: 'POST /api/sessions/register',
       login: 'POST /api/sessions/login',
       current: 'GET /api/sessions/current (requiere token JWT)',
@@ -45,6 +46,15 @@ app.get('/', (req, res) => {
         purchase: 'POST /api/carts/:cid/purchase (user)'
       }
     }
+  });
+});
+
+// Health check
+app.get('/health', (req, res) => {
+  res.json({
+    status: 'ok',
+    uptime: process.uptime(),
+    timestamp: new Date().toISOString()
   });
 });
 
