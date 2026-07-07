@@ -1,17 +1,11 @@
-require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const connectDB = require('./config/database');
 const passport = require('./config/passport.config');
 const sessionsRoutes = require('./routes/sessions.routes');
 const productsRoutes = require('./routes/products.routes');
 const cartsRoutes = require('./routes/carts.routes');
 
 const app = express();
-const PORT = process.env.PORT || 8080;
-
-// Conectar a la base de datos
-connectDB();
 
 // Middlewares
 app.use(cors());
@@ -65,11 +59,6 @@ app.use((err, req, res, next) => {
     status: 'error',
     message: err.message || 'Error interno del servidor'
   });
-});
-
-// Iniciar servidor
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
 
 module.exports = app;

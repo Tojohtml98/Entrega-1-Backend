@@ -11,6 +11,13 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/Tojohtml98/Nodejs-Clean-Architecture-API/actions/workflows/ci.yml">
+    <img src="https://github.com/Tojohtml98/Nodejs-Clean-Architecture-API/actions/workflows/ci.yml/badge.svg" alt="CI" />
+  </a>
+  <img src="https://img.shields.io/badge/tests-Jest-C21325?logo=jest&logoColor=white" alt="Jest" />
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/Node.js-20-339933?logo=node.js&logoColor=white" alt="Node 20" />
   <img src="https://img.shields.io/badge/Express-4-000000?logo=express&logoColor=white" alt="Express" />
   <img src="https://img.shields.io/badge/MongoDB-Atlas-47A248?logo=mongodb&logoColor=white" alt="MongoDB" />
@@ -82,6 +89,22 @@ npm run dev            # nodemon
 ```
 
 Server boots on `http://localhost:8080`.
+
+---
+
+## Testing
+
+The suite runs against a **real MongoDB in memory** (`mongodb-memory-server`) — no mocks, no external database. Each test file boots an isolated Mongo instance and collections are cleared between tests, so runs are deterministic and side-effect free.
+
+```bash
+npm test
+```
+
+- **17 integration tests** covering auth (register / login / `current` with JWT) and the products CRUD (public reads, admin-only writes, 401/403/404 paths).
+- Exercised end-to-end through `supertest` against the real Express app.
+- Runs on every push and pull request via **GitHub Actions** (see the CI badge above).
+
+> To keep the app testable, `app.js` only builds and exports the Express instance; `server.js` owns the DB connection and `listen()`. This lets tests import the app without opening real ports or connections.
 
 ---
 
